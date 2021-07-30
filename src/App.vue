@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <Header @show-addTask="toggleShowAddTask" title="Task Tracker"/>
+  <Header @show-addTask="toggleShowAddTask" title="Task Tracker" :showAddTask="showAddTask"/>
   <div v-show="showAddTask">
     <AddTask @add-task="addTask"/>
   </div>
@@ -48,39 +48,26 @@ export default {
     }
   },
   created(){
-    this.tasks = [
-      {
-        id: 1,
-        text: "Task 1",
-        day: "02/21/2021",
-        reminder: false
-      },
-      {
-        id: 2,
-        text: "Task 2",
-        day: "02/24/2021",
-        reminder: false
-      },
-      {
-        id: 3,
-        text: "Task 3",
-        day: "03/11/2021",
-        reminder: true
-      }
-    ]
+
+    if(localStorage.getItem("todoItems") === null){
+      localStorage.setItem("todoItems", []);
+         this.tasks = []
+    } else {
+      this.tasks = JSON.parse(localStorage.getItem("todoItems"))
+    }
   }
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 .container {
   max-width: 500px;
@@ -90,6 +77,7 @@ body {
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
+  box-shadow: #000 10px;
 }
 .btn {
   display: inline-block;

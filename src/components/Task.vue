@@ -6,6 +6,7 @@
         </h3>
         <p>
             {{ task.day }}
+            {{ task.time }}
         </p>
     </div>
 </template>

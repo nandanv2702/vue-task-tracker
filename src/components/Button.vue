@@ -1,5 +1,5 @@
 <template>
-    <button @click="onClick()" class="btn" :style="{ 'background':color }">
+    <button class="btn" :style="{ 'background': color }">
         {{ text }}
     </button>
 </template>
@@ -18,3 +18,11 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+Button {
+    width: 120px;
+}
+
+</style>

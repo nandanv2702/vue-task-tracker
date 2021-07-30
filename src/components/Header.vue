@@ -3,7 +3,7 @@
         <h1>
             {{ title }}
         </h1>
-        <Button text="Add Task" color="green"/>
+        <Button text="Add Task" @click="$emit('show-addTask')" color="green"/>
     </header>
 </template>
 
@@ -18,7 +18,8 @@
         },
         components: {
             Button
-        }
+        },
+        emits: ['show-addTask']
     }
 </script>
 

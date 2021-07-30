@@ -1,6 +1,10 @@
 <template>
 <div class="container">
-  <Header title="Task Tracker"/>
+  <Header @show-addTask="toggleShowAddTask" title="Task Tracker"/>
+  <div v-show="showAddTask">
+    <AddTask @add-task="addTask"/>
+  </div>
+
   <Tasks @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks"/>
 </div>
   <h3>
@@ -12,16 +16,19 @@
 
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
+import AddTask from './components/AddTask.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Tasks
+    Tasks,
+    AddTask
   },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      showAddTask: false
     }
   },
   methods: 
@@ -32,6 +39,12 @@ export default {
     toggleReminder(id){
       console.log(id);
       this.tasks = this.tasks.map(task => task.id == id ? {...task, reminder: !task.reminder} : task)
+    },
+    addTask(task){
+      this.tasks = [...this.tasks, task]
+    },
+    toggleShowAddTask(){
+      this.showAddTask = !this.showAddTask
     }
   },
   created(){
@@ -60,7 +73,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;

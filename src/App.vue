@@ -35,13 +35,14 @@ export default {
   {
     deleteTask(id){
       this.tasks = this.tasks.filter(task => task.id !== id)
+      localStorage.setItem("todoItems", JSON.stringify(this.tasks))
     },
     toggleReminder(id){
       console.log(id);
       this.tasks = this.tasks.map(task => task.id == id ? {...task, reminder: !task.reminder} : task)
     },
-    addTask(task){
-      this.tasks = [...this.tasks, task]
+    addTask(newTask){
+      this.tasks = [...this.tasks, newTask]
     },
     toggleShowAddTask(){
       this.showAddTask = !this.showAddTask

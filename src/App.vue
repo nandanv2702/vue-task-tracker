@@ -65,7 +65,6 @@ export default {
     }
     
     if(typeof(Notification) !== undefined){
-        if("Notification" in window === true){
           Notification.requestPermission().then(permission => {
             if(permission){
               let title = "Welcome to Task Tracker!"
@@ -73,7 +72,6 @@ export default {
               new Notification(title, {body: text})
             }
           })
-      }
     }
 
   }

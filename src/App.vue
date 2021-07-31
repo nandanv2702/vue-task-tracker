@@ -55,8 +55,27 @@ export default {
          this.tasks = []
          this.toggleShowAddTask()
     } else {
-      this.tasks = JSON.parse(localStorage.getItem("todoItems"))
+      if(localStorage.getItem("todoItems")){
+        this.tasks = JSON.parse(localStorage.getItem("todoItems"))
+      } else {
+        this.tasks = []
+        this.toggleShowAddTask()
+      }
+      
     }
+    
+    if(typeof(Notification) !== undefined){
+        if("Notification" in window === true){
+          Notification.requestPermission().then(permission => {
+            if(permission){
+              let title = "Welcome to Task Tracker!"
+              let text = "We'll send notifications to remind you to complete your tasks :)"
+              new Notification(title, {body: text})
+            }
+          })
+      }
+    }
+
   }
 }
 </script>
@@ -70,16 +89,16 @@ export default {
 }
 body {
   font-family: 'Inter', sans-serif;
+  background-color: rgba(217,236,255);
 }
 .container {
   max-width: 500px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
-  box-shadow: #000 10px;
+  box-shadow: 1px 2px 12px #606266;
 }
 .btn {
   display: inline-block;

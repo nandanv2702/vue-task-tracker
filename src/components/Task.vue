@@ -31,6 +31,7 @@
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  border-radius: 5px;
 }
 .task.reminder {
   border-left: 5px solid green;

@@ -4,7 +4,7 @@
             {{ task.text }}
             <i class="fas fa-times" @click="$emit('delete-task', task.id)"></i>
         </h3>
-        <p>
+        <p class="info">
             {{ task.day }}
             {{ task.time }}
         </p>
@@ -39,5 +39,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.task .info {
+  font-size: .9rem;
 }
 </style>

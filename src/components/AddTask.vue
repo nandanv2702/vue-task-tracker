@@ -35,10 +35,11 @@
 export default {
     name: 'AddTask',
     data() {
+      const today = new Date()
         return {
-            text: 'something',
-            day: 'Friday',
-            time: '2pm',
+            text: 'Add a Task!',
+            day: today.getFullYear(),
+            time: '',
             reminder: true
         }
     },

@@ -51,8 +51,9 @@ export default {
   created(){
 
     if(localStorage.getItem("todoItems") === null){
-      localStorage.setItem("todoItems", []);
+        localStorage.setItem("todoItems", []);
          this.tasks = []
+         this.toggleShowAddTask()
     } else {
       this.tasks = JSON.parse(localStorage.getItem("todoItems"))
     }
